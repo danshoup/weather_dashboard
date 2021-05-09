@@ -1,17 +1,30 @@
-function renderMoment() {
-    // Use Moment.js to format today's date for the jumbotron
-    var today = moment().format("dddd, MMMM Mo - YYYY");
-    $("#currentDay").text(today);
-    console.log(today);
-}
-renderMoment()
 
-fetch("https://api.openweathermap.org/data/2.5/weather?q=okemos&appid=3c229c00e34da818096144820759d78c", {
-    cache: "reload",
-})
-    .then(function (response) {
-        return response.json();
-    })
-    .then(function (data) {
-        console.log(data);
-    });
+var searchFormEl = document.querySelector('#search-form');
+
+// Get user input for city weathe search and add input city to API url
+function handleSearchFormSubmit(event) {
+    event.preventDefault();
+
+    var searchCityVal = document.querySelector('#city-input').value;
+    searchCityVal = searchCityVal.toLowerCase();
+    console.log(searchCityVal);
+
+    if (!searchCityVal) {
+        console.error("You need a search input value!");
+        return;
+    }
+
+    var weatherApi = "https://api.openweathermap.org/data/2.5/weather?q=" + searchCityVal + "&appid=3c229c00e34da818096144820759d78c"
+
+    console.log(weatherApi);
+
+}
+    
+// Listen for button click to initiate search
+searchFormEl.addEventListener("submit", handleSearchFormSubmit);
+
+// Create buttons for each recent city search
+function pastSearch(cities) {
+
+}
+
