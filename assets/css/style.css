@@ -1,6 +1,10 @@
+
 body {
     font-family: 'Maven Pro', sans-serif;
     font-size: 16px;
     line-height: 1;
   }
   
+  header {
+    background-image: linear-gradient(to right, rgb(62, 126, 245), rgb(9, 9, 94));
+  }

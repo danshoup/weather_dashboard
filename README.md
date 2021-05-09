@@ -5,14 +5,14 @@ Assignment, Week 6; MSU Coding BootCamp
 
 ​
 
-This is the sixth assigment for MSU Coding Bootcamp; to use thir-party APIs to display weather data on my own weather dashboard page. This dashboard runs in the browser and features dynamically updated HTML and CSS that includes the data retreived from the APIs.
+This is the sixth assigment for MSU Coding Bootcamp; to use third-party APIs to display weather data on my own weather dashboard page. This dashboard runs in the browser and features dynamically updated HTML and CSS that includes the data retreived from the APIs.
 
 ### Livepage Link
 [Daniel Shoup's Weather Dashboard Page](https://danshoup.github.io/weather_dashboard/)
 
 ### Weather Dashboard Screenshot
 
-![Application Screen Shot](./assets/images/tempDashboard.png)
+![Application Screen Shot](./assets/images/weatherdashboardtemp.png)
 
 ### Acceptance Criteria Summary
 
