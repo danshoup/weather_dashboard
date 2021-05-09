@@ -9,6 +9,9 @@ var currentHumidity = document.querySelector("#nowHumid");
 var currentUV = document.querySelector("#nowUV");
 
 
+
+
+
 // Get user input for city weathe search and add input city to API url
 function handleSearchFormSubmit(event) {
     event.preventDefault();
@@ -25,7 +28,6 @@ function handleSearchFormSubmit(event) {
    
     // API call for city weather info based in user city input
     var weatherApi = "https://api.openweathermap.org/data/2.5/weather?q=" + searchCityVal + "&units=imperial&appid=3c229c00e34da818096144820759d78c"
-    console.log(weatherApi);
 
     fetch(weatherApi)
         .then(function (response) {
@@ -34,26 +36,36 @@ function handleSearchFormSubmit(event) {
         .then(function (data) {
             console.log(data);
             var curCity = data.name;
-            console.log(curCity);
             var curTemp = data.main.temp;
-            console.log(curTemp);
             var curWind = data.wind.speed;
-            console.log(curWind);
             var curHumidity = data.main.humidity;
-            console.log(curHumidity);
+            var curLat = data.coord.lat;
+            var curLon = data.coord.lon;
             currentCity.textContent = curCity + " ";
             currentTemp.textContent = curTemp;
             currentWind.textContent = curWind;
             currentHumidity.textContent = curHumidity;
             todayDate.textContent = today;
-            // currentUV.textContent = curUV;
+            console.log(curLat);
+            console.log(curLon);   
             
+            var fiveDay = "https://api.openweathermap.org/data/2.5/onecall?lat=" + curLat + "&lon=" + curLon + "&exclude=minutely,hourly,alerts&units=imperial&appid=3c229c00e34da818096144820759d78c"
+            console.log(fiveDay);
+
+            fetch(fiveDay)
+                .then(function (response) {
+                    return response.json();
+                })
+                .then (function (data) {
+                    console.log(data);
+                    var curUV = data.current.uvi;
+                    currentUV.textContent = curUV;
+
         })
 
+        })
 
 }
     
 // Listen for button click to initiate search
 searchFormEl.addEventListener("submit", handleSearchFormSubmit);
-
-
