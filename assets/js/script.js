@@ -1,5 +1,13 @@
 
 var searchFormEl = document.querySelector('#search-form');
+var today = moment().format("MM/DD/YYYY");
+var todayDate = document.querySelector("#date");
+var currentCity = document.querySelector("#nowCity");
+var currentTemp = document.querySelector("#nowTemp");
+var currentWind = document.querySelector("#nowWind");
+var currentHumidity = document.querySelector("#nowHumid");
+var currentUV = document.querySelector("#nowUV");
+
 
 // Get user input for city weathe search and add input city to API url
 function handleSearchFormSubmit(event) {
@@ -25,6 +33,21 @@ function handleSearchFormSubmit(event) {
         })
         .then(function (data) {
             console.log(data);
+            var curCity = data.name;
+            console.log(curCity);
+            var curTemp = data.main.temp;
+            console.log(curTemp);
+            var curWind = data.wind.speed;
+            console.log(curWind);
+            var curHumidity = data.main.humidity;
+            console.log(curHumidity);
+            currentCity.textContent = curCity + " ";
+            currentTemp.textContent = curTemp;
+            currentWind.textContent = curWind;
+            currentHumidity.textContent = curHumidity;
+            todayDate.textContent = today;
+            // currentUV.textContent = curUV;
+            
         })
 
 
