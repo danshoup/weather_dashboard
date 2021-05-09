@@ -14,17 +14,23 @@ function handleSearchFormSubmit(event) {
         return;
     }
 
-    var weatherApi = "https://api.openweathermap.org/data/2.5/weather?q=" + searchCityVal + "&appid=3c229c00e34da818096144820759d78c"
-
+   
+    // API call for city weather info based in user city input
+    var weatherApi = "https://api.openweathermap.org/data/2.5/weather?q=" + searchCityVal + "&units=imperial&appid=3c229c00e34da818096144820759d78c"
     console.log(weatherApi);
+
+    fetch(weatherApi)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            console.log(data);
+        })
+
 
 }
     
 // Listen for button click to initiate search
 searchFormEl.addEventListener("submit", handleSearchFormSubmit);
 
-// Create buttons for each recent city search
-function pastSearch(cities) {
-
-}
 
