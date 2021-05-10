@@ -75,7 +75,6 @@ function handleSearchFormSubmit(event) {
             var curLat = data.coord.lat;
             var curLon = data.coord.lon;
             currentCity.textContent = data.name + " - ";
-            currentIcon.textContent = data.weather[0].icon;
             currentTemp.textContent = data.main.temp;
             currentWind.textContent = data.wind.speed;
             currentHumidity.textContent = data.main.humidity;
