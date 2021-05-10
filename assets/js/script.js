@@ -26,6 +26,7 @@ var currentTemp = document.querySelector("#nowTemp");
 var currentWind = document.querySelector("#nowWind");
 var currentHumidity = document.querySelector("#nowHumid");
 var currentUV = document.querySelector("#nowUV");
+var currentIcon = document.querySelector("#nowIcon");
 
 // Variables for 5-day forecast
 var tempOne = document.querySelector("#temp1");
@@ -43,6 +44,11 @@ var humidTwo = document.querySelector("#humid2");
 var humidThree = document.querySelector("#humid3");
 var humidFour = document.querySelector("#humid4");
 var humidFive = document.querySelector("#humid5");
+var iconOne = document.querySelector("#icon1");
+var iconTwo = document.querySelector("#icon2");
+var iconThree = document.querySelector("#icon3");
+var iconFour = document.querySelector("#icon4");
+var iconFive = document.querySelector("#icon5");
 
 
 
@@ -78,6 +84,7 @@ function handleSearchFormSubmit(event) {
             currentTemp.textContent = data.main.temp;
             currentWind.textContent = data.wind.speed;
             currentHumidity.textContent = data.main.humidity;
+            currentIcon.src = "http://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png";
             
             // API call to get the five-day forecast (could have gotten current here also, but needed other API to get lat/long?)
             var fiveDay = "https://api.openweathermap.org/data/2.5/onecall?lat=" + curLat + "&lon=" + curLon + "&exclude=minutely,hourly,alerts&units=imperial&appid=3c229c00e34da818096144820759d78c"
@@ -105,6 +112,11 @@ function handleSearchFormSubmit(event) {
                     humidThree.textContent = data.daily[2].humidity;
                     humidFour.textContent = data.daily[3].humidity;
                     humidFive.textContent = data.daily[4].humidity;
+                    iconOne.src = "http://openweathermap.org/img/wn/" + data.daily[0].weather[0].icon + ".png";
+                    iconTwo.src = "http://openweathermap.org/img/wn/" + data.daily[1].weather[0].icon + ".png";
+                    iconThree.src = "http://openweathermap.org/img/wn/" + data.daily[2].weather[0].icon + ".png";
+                    iconFour.src = "http://openweathermap.org/img/wn/" + data.daily[3].weather[0].icon + ".png";
+                    iconFive.src = "http://openweathermap.org/img/wn/" + data.daily[4].weather[0].icon + ".png";
 
         })
 
