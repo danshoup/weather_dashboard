@@ -12,7 +12,7 @@ This is the sixth assigment for MSU Coding Bootcamp; to use third-party APIs to 
 
 ### Weather Dashboard Screenshot
 
-![Application Screen Shot](./assets/images/weatherdashboardtemp.png)
+![Application Screen Shot](./assets/images/weatherdash.png)
 
 ### Acceptance Criteria Summary
 
