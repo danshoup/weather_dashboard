@@ -1,5 +1,6 @@
 
 var searchFormEl = document.querySelector('#search-form');
+var recentSearches = document.querySelector("#recent");
 // Use moment to add dates to forecast
 var today = moment().format("MM/DD/YYYY");
 var dayOne = moment().add(1, 'd').format("MM/DD/YYYY");
@@ -61,6 +62,10 @@ function handleSearchFormSubmit(event) {
 
     var searchCityVal = document.querySelector('#city-input').value;
     localStorage.setItem("city", searchCityVal);
+    var recentCity = document.createElement("button");
+    recentCity.classList.add("btn", "btn-secondary", "btn-block");
+    recentCity.textContent = localStorage.getItem("city");
+    recentSearches.append(recentCity);
     searchCityVal = searchCityVal.toLowerCase();
     console.log(searchCityVal);
     
@@ -97,8 +102,7 @@ function handleSearchFormSubmit(event) {
                 })
                 .then (function (data) {
                     console.log(data);
-                    var curUV = data.current.uvi;
-                    currentUV.textContent = curUV;
+                    currentUV.textContent = data.current.uvi;
                     tempOne.textContent = data.daily[0].temp.day;
                     tempTwo.textContent = data.daily[1].temp.day;
                     tempThree.textContent = data.daily[2].temp.day;
