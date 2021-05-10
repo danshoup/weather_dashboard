@@ -134,7 +134,7 @@ function handleSearchFormSubmit(event) {
 function handleRecentSearches(event) {
     event.preventDefault();
     var target = event.target;
-    document.querySelector('#city-input').setAttribute("val", target.textContent);
+    document.querySelector('#city-input').value = target.textContent;
     console.log(target.textContent);
     handleRecentSearches;
 }
