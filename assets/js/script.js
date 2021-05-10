@@ -60,8 +60,10 @@ function handleSearchFormSubmit(event) {
     event.preventDefault();
 
     var searchCityVal = document.querySelector('#city-input').value;
+    localStorage.setItem("city", searchCityVal);
     searchCityVal = searchCityVal.toLowerCase();
     console.log(searchCityVal);
+    
 
     if (!searchCityVal) {
         console.error("You need a search input value!");
