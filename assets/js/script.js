@@ -134,9 +134,12 @@ function handleSearchFormSubmit(event) {
 function handleRecentSearches(event) {
     event.preventDefault();
     var target = event.target;
+    var reSubmit = document.querySelector("#submitBtn");
     document.querySelector('#city-input').value = target.textContent;
     console.log(target.textContent);
-    handleRecentSearches;
+    reSubmit.click();
+    return;
+
 }
 
 // Listen for button click to initiate search
