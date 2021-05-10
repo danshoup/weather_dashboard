@@ -129,7 +129,18 @@ function handleSearchFormSubmit(event) {
         })
 
 }
-    
+ 
+//  Function to replace the input value with button text on click; struggling to get this to work (find different solution...)
+function handleRecentSearches(event) {
+    event.preventDefault();
+    var target = event.target;
+    document.querySelector('#city-input').setAttribute("val", target.textContent);
+    console.log(target.textContent);
+    handleRecentSearches;
+}
+
 // Listen for button click to initiate search
 searchFormEl.addEventListener("submit", handleSearchFormSubmit);
+// Listen for click on recent searches buttons
+recentSearches.addEventListener("click", handleRecentSearches);
 
