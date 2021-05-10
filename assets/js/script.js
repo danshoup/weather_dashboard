@@ -1,6 +1,6 @@
 
 var searchFormEl = document.querySelector('#search-form');
-
+// Use moment to add dates to forecast
 var today = moment().format("MM/DD/YYYY");
 var dayOne = moment().add(1, 'd').format("MM/DD/YYYY");
 var dayTwo = moment().add(2, 'd').format("MM/DD/YYYY");
@@ -20,13 +20,29 @@ date3.textContent = dayThree;
 date4.textContent = dayFour;
 date5.textContent = dayFive;
 
-
-
+// Variables to get current weather info for city
 var currentCity = document.querySelector("#nowCity");
 var currentTemp = document.querySelector("#nowTemp");
 var currentWind = document.querySelector("#nowWind");
 var currentHumidity = document.querySelector("#nowHumid");
 var currentUV = document.querySelector("#nowUV");
+
+// Variables for 5-day forecast
+var tempOne = document.querySelector("#temp1");
+var tempTwo = document.querySelector("#temp2");
+var tempThree = document.querySelector("#temp3");
+var tempFour = document.querySelector("#temp4");
+var tempFive = document.querySelector("#temp5");
+var windOne = document.querySelector("#wind1");
+var windTwo = document.querySelector("#wind2");
+var windThree = document.querySelector("#wind3");
+var windFour = document.querySelector("#wind4");
+var windFive = document.querySelector("#wind5");
+var humidOne = document.querySelector("#humid1");
+var humidTwo = document.querySelector("#humid2");
+var humidThree = document.querySelector("#humid3");
+var humidFour = document.querySelector("#humid4");
+var humidFive = document.querySelector("#humid5");
 
 
 
@@ -56,17 +72,14 @@ function handleSearchFormSubmit(event) {
         })
         .then(function (data) {
             console.log(data);
-            var curCity = data.name;
-            var curTemp = data.main.temp;
-            var curWind = data.wind.speed;
-            var curHumidity = data.main.humidity;
             var curLat = data.coord.lat;
             var curLon = data.coord.lon;
-            currentCity.textContent = curCity + " - ";
-            currentTemp.textContent = curTemp;
-            currentWind.textContent = curWind;
-            currentHumidity.textContent = curHumidity;
+            currentCity.textContent = data.name + " - ";
+            currentTemp.textContent = data.main.temp;
+            currentWind.textContent = data.wind.speed;
+            currentHumidity.textContent = data.main.humidity;
             
+            // API call to get the five-day forecast (could have gotten current here also, but needed other API to get lat/long?)
             var fiveDay = "https://api.openweathermap.org/data/2.5/onecall?lat=" + curLat + "&lon=" + curLon + "&exclude=minutely,hourly,alerts&units=imperial&appid=3c229c00e34da818096144820759d78c"
 
             fetch(fiveDay)
@@ -77,13 +90,21 @@ function handleSearchFormSubmit(event) {
                     console.log(data);
                     var curUV = data.current.uvi;
                     currentUV.textContent = curUV;
-                    console.log(data.daily[0].temp.day);
-                    console.log(data.daily[0].wind_speed);
-                    console.log(data.daily[0].temp.day);
-                    
-                    // for (var i = 0; i < 5; i++) {
-                    //     console.log(data.daily[4].temp.day);
-                    // }
+                    tempOne.textContent = data.daily[0].temp.day;
+                    tempTwo.textContent = data.daily[1].temp.day;
+                    tempThree.textContent = data.daily[2].temp.day;
+                    tempFour.textContent = data.daily[3].temp.day;
+                    tempFive.textContent = data.daily[4].temp.day;
+                    windOne.textContent = data.daily[0].wind_speed;
+                    windTwo.textContent = data.daily[1].wind_speed;
+                    windThree.textContent = data.daily[2].wind_speed;
+                    windFour.textContent = data.daily[3].wind_speed;
+                    windFive.textContent = data.daily[4].wind_speed;
+                    humidOne.textContent = data.daily[0].humidity;
+                    humidTwo.textContent = data.daily[1].humidity;
+                    humidThree.textContent = data.daily[2].humidity;
+                    humidFour.textContent = data.daily[3].humidity;
+                    humidFive.textContent = data.daily[4].humidity;
 
         })
 
